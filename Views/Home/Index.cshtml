@@ -1,0 +1,58 @@
+﻿@model IEnumerable<taha0025lab4.Models.Movie>
+@{
+    Layout = "_Layout";
+}
+
+<div>
+    <h2 style="padding-bottom:10px;font-size: 1.5em;font-weight:bold;">Home</h2>
+    <table style="width: 100%">
+        @if (Model == null || Model.Count() == 0)
+        {
+            <tbody>
+                <tr>
+                    <td colspan="6">There are no movies in your database.<br /><br /></td>
+                </tr>
+            </tbody>
+        }
+        else
+        {
+            <thead>
+                <tr>
+                    <th><div style="text-align:center">Options</div></th>
+                    <th><div style="text-align:center">Movie Title</div></th>
+                    <th><div style="text-align:center">Movie SubTitle</div></th>
+                    <th><div style="text-align:center">Description</div></th>
+                    <th><div style="text-align:center">Year</div></th>
+                    <th><div style="text-align:center">Rating</div></th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var item in Model)
+                {
+                    <tr>
+                        <td>
+                            <div style="text-align:center">
+                                <a asp-controller="Home"
+                                   asp-action="EditMovie"
+                                   asp-route-id="@item.MovieId"><u>Edit</u></a>
+                            </div>
+                            <br />
+                            <div style="text-align:center">
+                                <a asp-controller="Home"
+                                   asp-action="DeleteMovie"
+                                   asp-route-id="@item.MovieId"><u>Delete</u></a>
+                            </div>
+                        </td>
+                        <td><div style="text-align:center">@item.Title</div></td>
+                        <td><div style="text-align:center">@item.SubTitle</div></td>
+                        <td><div style="text-align:center">@item.Description</div></td>
+                        <td><div style="text-align:center">@item.Year</div></td>
+                        <td><div style="text-align:center">@item.Rating/5</div></td>
+                    </tr>
+                }
+                </tbody>
+            }
+        </table>
+
+        </div>
+        <footer></footer>

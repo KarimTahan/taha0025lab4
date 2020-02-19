@@ -1,0 +1,57 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <title>@ViewData["Title"] Taha0025 .Net Lab 4</title>
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="~/css/site.css" />
+</head>
+<body>
+    <header style="background-color: #f0f8ff; border-bottom: 1px solid black; margin:0;padding:10px">
+        <div>
+            <h3 style="display: block; font-size: 1.17em; font-weight: bold; margin-bottom:20px">Movies Database</h3>
+            <div>
+                <a asp-area="" asp-controller="Home" asp-action="Index">Home</a>
+                &nbsp;
+                <a asp-area="" asp-controller="Home" asp-action="AddMovie">Add Movie</a>
+            </div>
+        </div>
+    </header>
+    <br />
+    <div>
+        <main>
+            @RenderBody()
+        </main>
+    </div>
+    <footer style="background-color: #f0f8ff; border-top: 1px solid black; padding:10px">
+        <div>
+            &copy; 2020 - Karim Tahan
+            <br />
+        </div>
+        <div>
+            <br />
+            <h4 style="font-weight:bold;font-size:1em">Create Movies Table</h4>
+            <br>
+            CREATE TABLE Movies(
+            <br>
+            [MovieId] [int] NOT NULL PRIMARY KEY IDENTITY(1,1),
+            <br>
+            [Title] [nvarchar](1000) NOT NULL,
+            <br>
+            [SubTitle] [nvarchar](1000) NOT NULL,
+            <br>
+            [Description] [nvarchar](1000) NOT NULL,
+            <br>
+            [Year] [datetime] NOT NULL,
+            <br>
+            [Rating] [int] NOT NULL)
+            <br>
+            GO
+        </div>
+    </footer>
+    <script src="~/lib/jquery/dist/jquery.min.js"></script>
+    <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="~/js/site.js" asp-append-version="true"></script>
+    @RenderSection("Scripts", required: false)
+</body>
+</html>
