@@ -25,7 +25,7 @@
                     <th><div style="text-align:center">Year</div></th>
                     <th><div style="text-align:center">Rating</div></th>
                 </tr>
-            </thead>
+            </thead> 
             <tbody>
                 @foreach (var item in Model)
                 {
@@ -38,7 +38,7 @@
                             </div>
                             <br />
                             <div style="text-align:center">
-                                <a asp-controller="Home"
+                                <a onclick="return confirm('Are you sure?');" asp-controller="Home"
                                    asp-action="DeleteMovie"
                                    asp-route-id="@item.MovieId"><u>Delete</u></a>
                             </div>

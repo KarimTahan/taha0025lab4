@@ -4,6 +4,7 @@ using System.Diagnostics;
 using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Logging;
 using taha0025lab4.Models;
 
@@ -31,7 +32,17 @@ namespace taha0025lab4.Controllers
         public IActionResult CreateMovie(Movie movie)
         {
             _movieContext.Movies.Add(movie);
-            _movieContext.SaveChanges();
+
+            if((movie.Rating <=5 && movie.Rating >= 1) && (movie.SubTitle.Length > 1 && movie.SubTitle.Length < 1001) && (movie.Title.Length > 1 && movie.Title.Length < 1001) && (movie.Description.Length > 1 && movie.Description.Length < 1001))
+            {
+                try
+                {
+                    _movieContext.SaveChanges();
+                }
+                catch (Exception e)
+                {
+                }
+            }
 
             return RedirectToAction("Index");
         }
@@ -53,8 +64,17 @@ namespace taha0025lab4.Controllers
             movieToUpdate.Description = movie.Description;
             movieToUpdate.Year = movie.Year;
 
-            _movieContext.SaveChanges();
 
+            if ((movie.Rating <= 5 && movie.Rating >= 1) && (movie.SubTitle.Length > 1 && movie.SubTitle.Length < 1001) && (movie.Title.Length > 1 && movie.Title.Length < 1001) && (movie.Description.Length > 1 && movie.Description.Length < 1001))
+            {
+                try
+                {
+                    _movieContext.SaveChanges();
+                }
+                catch (Exception e)
+                {
+                }
+            }
             return RedirectToAction("Index");
         }
 
