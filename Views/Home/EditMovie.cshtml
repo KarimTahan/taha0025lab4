@@ -3,38 +3,35 @@
     ViewData["Title"] = "EditMovie";
 }
 
-<h2 style="padding-bottom:10px;font-size: 1.5em;font-weight:bold;">Edit Movie</h2>
-
 @using (Html.BeginForm("ModifyMovie", "Home"))
 {
-<form method="post" action="/Home/ModifyMovie">
-    <table>
-        <tr>
-            <td><label for="Title">Title</label></td>
-            <td><input type="text" data-val="true" data-val-length="The field Title must be a string with a maximum length of 1000." data-val-length-max="1000" data-val-required="The Title field is required." id="Title" name="Title" value="@Model.Title" /></td>
-        </tr>
-        <tr>
-            <td><label for="SubTitle">SubTitle</label></td>
-            <td><input type="text" data-val="true" data-val-length="The field SubTitle must be a string with a maximum length of 1000." data-val-length-max="1000" data-val-required="The SubTitle field is required." id="SubTitle" name="SubTitle" value="@Model.SubTitle" /></td>
-        </tr>
-        <tr>
-            <td><label for="Description">Description</label></td>
-            <td><input type="text" data-val="true" data-val-length="The field Description must be a string with a maximum length of 1000." data-val-length-max="1000" data-val-required="The Description field is required." id="Description" name="Description" value="@Model.Description" /></td>
-        </tr>
-        <tr>
-            <td><label for="Year">Year</label></td>
-            <td><input type="date" data-val="true" data-val-required="The Year field is required." id="Year" name="Year" value="@Model.Year" /></td>
-        </tr>
-        <tr>
-            <td><label for="Rating">Rating</label></td>
-            <td><input type="number" data-val="true" data-val-range="The field Rating must be between 1 and 5." data-val-range-max="5" data-val-range-min="1" data-val-required="The Rating field is required." id="Rating" name="Rating" value="@Model.Rating" /></td>
-        </tr>
-        <tr>
-            <td><input type="hidden" id="MovieId" name="MovieId" value="@Model.MovieId" /></td>
-        </tr>
-    </table>
-    <br />
-    <input type="submit" value="Edit Movie" />
-    <br /><br /><br />
-</form>
+    <div class="container">
+        <h2>Edit Movie</h2>
+        <form method="post" action="/Home/ModifyMovie">
+            <input type="hidden" value="@Model.MovieId" name="MovieId" />
+            <div class="form-group">
+                <label for="Title">Title</label>
+                <input type="text" class="form-control" id="Title" data-val="true" data-val-length="The field Title must be a string with a maximum length of 1000." data-val-length-max="1000" data-val-required="The Title field is required." name="Title" value="@Model.Title" />
+            </div>
+            <div class="form-group">
+                <label for="subtitle">SubTitle</label>
+                <input type="text" class="form-control" id="subtitle" data-val="true" data-val-length="The field SubTitle must be a string with a maximum length of 1000." data-val-length-max="1000" data-val-required="The SubTitle field is required." name="SubTitle" value="@Model.SubTitle" />
+            </div>
+            <div class="form-group">
+                <label for="description">Description</label>
+                <textarea type="text" rows="10" class="form-control" id="description" data-val="true" data-val-length="The field Description must be a string with a maximum length of 1000." data-val-length-max="1000" data-val-required="The Description field is required." name="Description" value="@Model.Description">@Model.Description</textarea>
+            </div>
+            <div class="form-group">
+                <label for="year">Year</label>
+                <input type="date" class="form-control" id="year" data-val="true" data-val-required="The Year field is required." name="Year" value="@Model.Year" />
+            </div>
+            <div class="form-group">
+                <label for="rating">Rating</label>
+                <input type="number" class="form-control" id="rating" data-val="true" data-val-range="The field Rating must be between 1 and 5." data-val-range-max="5" data-val-range-min="1" data-val-required="The Rating field is required." name="Rating" value="@Model.Rating" />
+            </div>
+            <br />
+            <button type="submit" class="btn btn-default">Edit Movie</button>
+            <br /><br /><br />
+        </form>
+    </div>
 }
